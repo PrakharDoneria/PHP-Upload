@@ -46,8 +46,10 @@ if ($_FILES["fileToUpload"]["error"] == 0) {
             file_put_contents($targetFile, $fileContent);
 
             $successMsg = "The file $uploadedFileName has been uploaded.";
-            $websiteLink = "https://protec.in/projects/$uploadedFileName";
-            echo "<script>openModal('$successMsg'); window.location.replace('$websiteLink');</script>";
+            $websiteLink = "https://protec-web-services.42web.io/projects/$uploadedFileName";
+            echo "<script>openModal('$successMsg');</script>";
+            header("Location: $websiteLink");
+            exit();
         } else {
             $errorMsg = "Sorry, there was an error uploading your file.";
             echo "<script>openModal('$errorMsg');</script>";
