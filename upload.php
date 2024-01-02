@@ -46,7 +46,7 @@ if ($_FILES["fileToUpload"]["error"] == 0) {
             file_put_contents($targetFile, $fileContent);
 
             $successMsg = "The file $uploadedFileName has been uploaded.";
-            $websiteLink = "https://ProTec.in/projects/$uploadedFileName";
+            $websiteLink = "https://protec-web-services.42web.io/projects/$uploadedFileName";
             echo "<script>alert('$successMsg'); window.location.replace('$websiteLink');</script>";
         } else {
             $errorMsg = "Sorry, there was an error uploading your file.";
