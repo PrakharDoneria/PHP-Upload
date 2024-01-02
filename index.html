@@ -5,29 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ProTec Cloud: HTML Editor PRO</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Add Three.js script -->
   <script type="module">
     import * as THREE from 'https://unpkg.com/three@110.0.1/build/three.module.js';
-    
-    // Your Three.js code goes here
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    // Add a cube as a placeholder for the person
+    const personGeometry = new THREE.BoxGeometry();
+    const personMaterial = new THREE.MeshBasicMaterial({ color: 0x3498db });
+    const person = new THREE.Mesh(personGeometry, personMaterial);
+    scene.add(person);
+
+    // Position the person
+    person.position.set(0, -1, -5);
 
     camera.position.z = 5;
 
     const animate = function () {
       requestAnimationFrame(animate);
 
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+      // Rotate the person
+      person.rotation.y += 0.01;
 
       renderer.render(scene, camera);
     };
@@ -47,7 +49,6 @@
   <div class="toolbar">
     <a href="https://html-editor-pro.neocities.org" class="toolbar-link">HTML Editor PRO</a>
   </div>
-
 
   <script src="script.js"></script>
 </body>
