@@ -26,14 +26,20 @@ input {
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* Advanced styling for the submit button */
 input[type="submit"] {
-  background-color: #4caf50;
+  background: linear-gradient(to right, #56ccf2, #2f80ed);
   color: #fff;
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
 }
 
 input[type="submit"]:hover {
-  background-color: #45a049;
+  background: linear-gradient(to right, #2f80ed, #56ccf2);
 }
 
 /* Toolbar styles */
