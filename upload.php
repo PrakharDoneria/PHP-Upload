@@ -11,14 +11,14 @@ if ($_FILES["fileToUpload"]["error"] == 0) {
     // Check if file already exists
     if (file_exists($targetFile)) {
         $errorMsg = "Sorry, file already exists.";
-        echo "<script>openModal('$errorMsg');</script>";
+        echo "<script>alert('$errorMsg');</script>";
         $uploadOk = 0;
     }
 
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > $maxFileSize) {
         $errorMsg = "Sorry, your file is too large (max size is 2MB).";
-        echo "<script>openModal('$errorMsg');</script>";
+        echo "<script>alert('$errorMsg');</script>";
         $uploadOk = 0;
     }
 
@@ -28,14 +28,14 @@ if ($_FILES["fileToUpload"]["error"] == 0) {
 
     if (!in_array($uploadedFileExtension, $allowedExtensions)) {
         $errorMsg = "Sorry, only HTML files are allowed.";
-        echo "<script>openModal('$errorMsg');</script>";
+        echo "<script>alert('$errorMsg');</script>";
         $uploadOk = 0;
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         $errorMsg = "Sorry, your file was not uploaded.";
-        echo "<script>openModal('$errorMsg');</script>";
+        echo "<script>alert('$errorMsg');</script>";
     } else {
         // Upload the file
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
@@ -46,17 +46,15 @@ if ($_FILES["fileToUpload"]["error"] == 0) {
             file_put_contents($targetFile, $fileContent);
 
             $successMsg = "The file $uploadedFileName has been uploaded.";
-            $websiteLink = "https://protec-web-services.42web.io/projects/$uploadedFileName";
-            echo "<script>openModal('$successMsg');</script>";
-            header("Location: $websiteLink");
-            exit();
+            $websiteLink = "https://ProTec.in/projects/$uploadedFileName";
+            echo "<script>alert('$successMsg'); window.location.replace('$websiteLink');</script>";
         } else {
             $errorMsg = "Sorry, there was an error uploading your file.";
-            echo "<script>openModal('$errorMsg');</script>";
+            echo "<script>alert('$errorMsg');</script>";
         }
     }
 } else {
     $errorMsg = "Error during file upload.";
-    echo "<script>openModal('$errorMsg');</script>";
+    echo "<script>alert('$errorMsg');</script>";
 }
 ?>
